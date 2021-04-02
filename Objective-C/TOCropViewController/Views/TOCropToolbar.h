@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat statusBarHeightInset;
 
 /* Tool bar background view */
-@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong, readonly) UIView *backgroundView;
 
 /* Set an inset that will expand the background view beyond the bounds. */
 @property (nonatomic, assign) UIEdgeInsets backgroundViewOutsets;
