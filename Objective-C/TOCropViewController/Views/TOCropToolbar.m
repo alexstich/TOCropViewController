@@ -42,7 +42,7 @@
 @property (nonatomic, assign) BOOL reverseContentLayout; // For languages like Arabic where they natively present content flipped from English
 
 /* Color of buttons */
-@property (null_resettable, nonatomic, copy) UIColor *iconButtonColor = [UIColor whiteColor];
+@property (null_resettable, nonatomic, copy) UIColor *iconButtonColor;
 
 @end
 
@@ -58,6 +58,7 @@
 }
 
 - (void)setup {
+    self.iconButtonColor = [UIColor whiteColor];
     self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
     self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
     [self addSubview:self.backgroundView];
@@ -440,7 +441,7 @@
 - (void)setDoneButtonColor:(UIColor *)doneButtonColor {
     // Set the default color when nil is specified
     if (doneButtonColor == nil) {
-        doneButtonColor = iconButtonColor;
+        doneButtonColor = _iconButtonColor;
     }
 
     if (doneButtonColor == _doneButtonColor) { return; }
