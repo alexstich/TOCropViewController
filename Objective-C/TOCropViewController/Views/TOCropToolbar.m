@@ -42,7 +42,7 @@
 @property (nonatomic, assign) BOOL reverseContentLayout; // For languages like Arabic where they natively present content flipped from English
 
 /* Color of buttons */
-@property (null_resettable, nonatomic, copy, readwrite) UIColor *iconButtonColor;
+@property (null_resettable, nonatomic, copy) UIColor *iconButtonColor;
 
 @end
 
