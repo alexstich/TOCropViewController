@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat statusBarHeightInset;
 
 /* Color of buttons */
-@property (nonatomic, assign) UIColor iconButtonColor;
+@property (nonatomic, assign) UIColor *iconButtonColor;
 
 /* Tool bar background view */
 @property (nonatomic, strong, readonly) UIView *backgroundView;
