@@ -335,7 +335,7 @@
     }
 }
 
-- (UIColor)iconButtonColor
+- (UIColor *)iconButtonColor
 {
     return UIColor.whiteColor;
 }
