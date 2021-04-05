@@ -41,6 +41,9 @@
 
 @property (nonatomic, assign) BOOL reverseContentLayout; // For languages like Arabic where they natively present content flipped from English
 
+/* Color of buttons */
+@property (null_resettable, nonatomic, copy) UIColor *iconButtonColor = [UIColor whiteColor];
+
 @end
 
 @implementation TOCropToolbar
@@ -77,7 +80,7 @@
 																  resourceBundle,
                                                                   nil)
                      forState:UIControlStateNormal];
-    [_doneTextButton setTitleColor:[UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
+    [_doneTextButton setTitleColor: iconButtonColor forState:UIControlStateNormal];
     if (@available(iOS 13.0, *)) {
         [_doneTextButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium]];
     } else {
@@ -89,7 +92,7 @@
     
     _doneIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_doneIconButton setImage:[TOCropToolbar doneImage] forState:UIControlStateNormal];
-    [_doneIconButton setTintColor:[UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f]];
+    [_doneIconButton setTintColor: iconButtonColor];
     [_doneIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_doneIconButton];
 
@@ -116,28 +119,28 @@
     
     _clampButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _clampButton.contentMode = UIViewContentModeCenter;
-    _clampButton.tintColor = [UIColor whiteColor];
+    _clampButton.tintColor = iconButtonColor;
     [_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
     [_clampButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_clampButton];
     
     _rotateCounterclockwiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateCounterclockwiseButton.contentMode = UIViewContentModeCenter;
-    _rotateCounterclockwiseButton.tintColor = [UIColor whiteColor];
+    _rotateCounterclockwiseButton.tintColor = iconButtonColor;
     [_rotateCounterclockwiseButton setImage:[TOCropToolbar rotateCCWImage] forState:UIControlStateNormal];
     [_rotateCounterclockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateCounterclockwiseButton];
     
     _rotateClockwiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateClockwiseButton.contentMode = UIViewContentModeCenter;
-    _rotateClockwiseButton.tintColor = [UIColor whiteColor];
+    _rotateClockwiseButton.tintColor = iconButtonColor;
     [_rotateClockwiseButton setImage:[TOCropToolbar rotateCWImage] forState:UIControlStateNormal];
     [_rotateClockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateClockwiseButton];
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _resetButton.contentMode = UIViewContentModeCenter;
-    _resetButton.tintColor = [UIColor whiteColor];
+    _resetButton.tintColor = iconButtonColor;
     _resetButton.enabled = NO;
     [_resetButton setImage:[TOCropToolbar resetImage] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,7 +172,7 @@
     static UIView *containerView = nil;
     if (!containerView) {
         containerView = [[UIView alloc] initWithFrame:CGRectZero];
-        containerView.backgroundColor = [UIColor redColor];
+        containerView.backgroundColor = [UIColor whiteColor];
         containerView.alpha = 0.1;
         [self addSubview:containerView];
     }
@@ -357,7 +360,7 @@
     if (_clampButtonGlowing)
         self.clampButton.tintColor = nil;
     else
-        self.clampButton.tintColor = [UIColor whiteColor];
+        self.clampButton.tintColor = iconButtonColor;
 }
 
 - (void)setRotateCounterClockwiseButtonHidden:(BOOL)rotateButtonHidden
@@ -437,7 +440,7 @@
 - (void)setDoneButtonColor:(UIColor *)doneButtonColor {
     // Set the default color when nil is specified
     if (doneButtonColor == nil) {
-        doneButtonColor = [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f];
+        doneButtonColor = iconButtonColor;
     }
 
     if (doneButtonColor == _doneButtonColor) { return; }
@@ -525,7 +528,7 @@
     {
         //// Rectangle 2 Drawing
         UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 9, 12, 12)];
-        [UIColor.whiteColor setFill];
+        [iconButtonColor setFill];
         [rectangle2Path fill];
         
         
@@ -536,7 +539,7 @@
         [rectangle3Path addLineToPoint: CGPointMake(10, 0)];
         [rectangle3Path addLineToPoint: CGPointMake(5, 3)];
         [rectangle3Path closePath];
-        [UIColor.whiteColor setFill];
+        [iconButtonColor setFill];
         [rectangle3Path fill];
         
         
@@ -544,7 +547,7 @@
         UIBezierPath* bezierPath = UIBezierPath.bezierPath;
         [bezierPath moveToPoint: CGPointMake(10, 3)];
         [bezierPath addCurveToPoint: CGPointMake(17.5, 11) controlPoint1: CGPointMake(15, 3) controlPoint2: CGPointMake(17.5, 5.91)];
-        [UIColor.whiteColor setStroke];
+        [iconButtonColor setStroke];
         bezierPath.lineWidth = 1;
         [bezierPath stroke];
         rotateImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -601,7 +604,7 @@
         [bezier2Path addCurveToPoint: CGPointMake(13, 0) controlPoint1: CGPointMake(9.15, 0.65) controlPoint2: CGPointMake(11, 0)];
         [bezier2Path addCurveToPoint: CGPointMake(22, 9) controlPoint1: CGPointMake(17.97, 0) controlPoint2: CGPointMake(22, 4.03)];
         [bezier2Path closePath];
-        [UIColor.whiteColor setFill];
+        [iconButtonColor setFill];
         [bezier2Path fill];
         
         
@@ -612,7 +615,7 @@
         [polygonPath addLineToPoint: CGPointMake(0, 9)];
         [polygonPath addLineToPoint: CGPointMake(5, 15)];
         [polygonPath closePath];
-        [UIColor.whiteColor setFill];
+        [iconButtonColor setFill];
         [polygonPath fill];
 
 
@@ -636,8 +639,8 @@
     UIGraphicsBeginImageContextWithOptions((CGSize){22,16}, NO, 0.0f);
     {
         //// Color Declarations
-        UIColor* outerBox = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 0.553];
-        UIColor* innerBox = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 0.773];
+        UIColor* outerBox = iconButtonColor;
+        UIColor* innerBox = iconButtonColor;
         
         //// Rectangle Drawing
         UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 3, 13, 13)];
