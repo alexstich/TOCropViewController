@@ -611,6 +611,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    alertController.view.tintColor = self.toolbar.tintColor;
     [alertController addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:nil]];
 
     //Add each item to the alert controller

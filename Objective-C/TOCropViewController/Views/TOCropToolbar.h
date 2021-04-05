@@ -30,9 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 /* In horizontal mode, offsets all of the buttons vertically by height of status bar. */
 @property (nonatomic, assign) CGFloat statusBarHeightInset;
 
-/* Color of buttons */
-@property (nonatomic, assign) UIColor *iconButtonColor;
-
 /* Tool bar background view */
 @property (nonatomic, strong, readonly) UIView *backgroundView;
 

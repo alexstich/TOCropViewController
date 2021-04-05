@@ -55,7 +55,6 @@
 }
 
 - (void)setup {
-    self.iconButtonColor = [UIColor whiteColor];
     self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
     self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.12f alpha:1.0f];
     [self addSubview:self.backgroundView];
@@ -78,7 +77,7 @@
 																  resourceBundle,
                                                                   nil)
                      forState:UIControlStateNormal];
-    [_doneTextButton setTitleColor: _iconButtonColor forState:UIControlStateNormal];
+    [_doneTextButton setTitleColor: self.tintColor forState:UIControlStateNormal];
     if (@available(iOS 13.0, *)) {
         [_doneTextButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium]];
     } else {
@@ -90,7 +89,7 @@
     
     _doneIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_doneIconButton setImage:[TOCropToolbar doneImage] forState:UIControlStateNormal];
-    [_doneIconButton setTintColor: _iconButtonColor];
+    [_doneIconButton setTintColor: self.tintColor];
     [_doneIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_doneIconButton];
 
@@ -117,28 +116,28 @@
     
     _clampButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _clampButton.contentMode = UIViewContentModeCenter;
-    _clampButton.tintColor = _iconButtonColor;
+    _clampButton.tintColor = self.tintColor;
     [_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
     [_clampButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_clampButton];
     
     _rotateCounterclockwiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateCounterclockwiseButton.contentMode = UIViewContentModeCenter;
-    _rotateCounterclockwiseButton.tintColor = _iconButtonColor;
+    _rotateCounterclockwiseButton.tintColor = self.tintColor;
     [_rotateCounterclockwiseButton setImage:[TOCropToolbar rotateCCWImage] forState:UIControlStateNormal];
     [_rotateCounterclockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateCounterclockwiseButton];
     
     _rotateClockwiseButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateClockwiseButton.contentMode = UIViewContentModeCenter;
-    _rotateClockwiseButton.tintColor = _iconButtonColor;
+    _rotateClockwiseButton.tintColor = self.tintColor;
     [_rotateClockwiseButton setImage:[TOCropToolbar rotateCWImage] forState:UIControlStateNormal];
     [_rotateClockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateClockwiseButton];
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _resetButton.contentMode = UIViewContentModeCenter;
-    _resetButton.tintColor = _iconButtonColor;
+    _resetButton.tintColor = self.tintColor;
     _resetButton.enabled = NO;
     [_resetButton setImage:[TOCropToolbar resetImage] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -335,11 +334,6 @@
     }
 }
 
-- (UIColor *)iconButtonColor
-{
-    return UIColor.whiteColor;
-}
-
 - (CGRect)clampButtonFrame
 {
     return self.clampButton.frame;
@@ -363,7 +357,7 @@
     if (_clampButtonGlowing)
         self.clampButton.tintColor = nil;
     else
-        self.clampButton.tintColor = _iconButtonColor;
+        self.clampButton.tintColor = self.tintColor;
 }
 
 - (void)setRotateCounterClockwiseButtonHidden:(BOOL)rotateButtonHidden
@@ -443,7 +437,7 @@
 - (void)setDoneButtonColor:(UIColor *)doneButtonColor {
     // Set the default color when nil is specified
     if (doneButtonColor == nil) {
-        doneButtonColor = _iconButtonColor;
+        doneButtonColor = self.tintColor;
     }
 
     if (doneButtonColor == _doneButtonColor) { return; }
