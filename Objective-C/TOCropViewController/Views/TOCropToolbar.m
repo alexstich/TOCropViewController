@@ -335,6 +335,11 @@
     }
 }
 
+- (UIColor)iconButtonColor
+{
+    return UIColor.whiteColor;
+}
+
 - (CGRect)clampButtonFrame
 {
     return self.clampButton.frame;
